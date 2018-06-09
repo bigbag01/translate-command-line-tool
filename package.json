@@ -2,10 +2,17 @@
   "name": "translate",
   "version": "1.0.0",
   "description": "谷歌翻译的命令行工具",
-  "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bigbag01/translate-command-line-tool.git"
   },
-  "author": "BeigeZhang",
-  "license": "MIT"
+  "main": "main.js",
+  "bin": {
+    "translate": "bin/main.js"
+  },
+  "author": "BeigeZhang<beigezhang001@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "google-translate-api-cn": "^1.0.1"
+  }
 }
