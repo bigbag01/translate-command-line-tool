@@ -1,3 +1,4 @@
+#!/usr/bin/env node 
 const translate = require('google-translate-api-cn');
 const readline = require('readline')
 
@@ -44,10 +45,18 @@ rl.on('line',(line)=>{
 		}
 		rl.prompt();
 	}else{
-		translate(line, {to: target}).then(res => {
-		    console.log(res.text);
-		    //console.log(res.from.language.iso);
-		    rl.prompt();
+		translate(line).then(res => {
+			if(res.from.language.iso=='en'){
+				target = 'zh-CN';
+			}else
+				target = 'en';
+		    translate(line,{to:target}).then(res =>{
+		    	console.log(res.text);
+		    	rl.prompt();
+		    }).catch(err => {
+			    console.error(err);
+			    rl.prompt();
+			});
 		}).catch(err => {
 		    console.error(err);
 		    rl.prompt();
